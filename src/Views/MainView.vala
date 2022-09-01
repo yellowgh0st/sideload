@@ -47,6 +47,7 @@ public class Sideload.MainView : AbstractView {
         loading_grid.append (loading_label);
 
         var agree_check = new Gtk.CheckButton.with_label (_("I understand"));
+				agree_check.remove_css_class ("text-button");
         agree_check.margin_top = 12;
 
         var download_size_icon = new Gtk.Image.from_icon_name ("browser-download-symbolic");
@@ -57,7 +58,6 @@ public class Sideload.MainView : AbstractView {
         download_context.add_class ("green");
 
         download_size_label = new Gtk.Label (null);
-        download_size_label.selectable = true;
         download_size_label.max_width_chars = 50;
         download_size_label.wrap = true;
         download_size_label.xalign = 0;
@@ -70,7 +70,6 @@ public class Sideload.MainView : AbstractView {
         updates_context.add_class ("orange");
 
         updates_label = new Gtk.Label (_("Updates to this app will not be reviewed"));
-        updates_label.selectable = true;
         updates_label.max_width_chars = 50;
         updates_label.wrap = true;
         updates_label.xalign = 0;
@@ -94,6 +93,7 @@ public class Sideload.MainView : AbstractView {
         details_grid.orientation = Gtk.Orientation.VERTICAL;
         details_grid.column_spacing = 6;
         details_grid.row_spacing = 12;
+				details_grid.margin_bottom = 6;
         details_grid.attach (download_size_icon, 0, 0);
         details_grid.attach (download_size_label, 1, 0);
         details_grid.attach (agree_check, 0, 3, 2);
@@ -110,7 +110,8 @@ public class Sideload.MainView : AbstractView {
         cancel_button.action_name = "app.quit";
 
         var install_button = new Gtk.Button.with_label (_("Install Anyway"));
-        install_button.add_css_class (Granite.STYLE_CLASS_DESTRUCTIVE_ACTION);
+				install_button.margin_start = 12;
+        install_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
 
         button_box.append (cancel_button);
         button_box.append (install_button);

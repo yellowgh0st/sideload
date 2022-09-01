@@ -45,7 +45,6 @@ public abstract class AbstractView : Gtk.Box {
 
         primary_label = new Gtk.Label (null) {
             max_width_chars = 1,
-            selectable = true,
             wrap = true,
             xalign = 0
         };
@@ -53,10 +52,9 @@ public abstract class AbstractView : Gtk.Box {
 
         secondary_label = new Gtk.Label (null) {
             margin_bottom = 18,
-            max_width_chars = 50,
-            selectable = true,
+            max_width_chars = 60,
             use_markup = true,
-            width_chars = 50,
+            width_chars = 62,
             wrap = true,
             xalign = 0
         };
@@ -71,13 +69,17 @@ public abstract class AbstractView : Gtk.Box {
             hexpand = true,
             vexpand = true,
             halign = Gtk.Align.END,
-            valign = Gtk.Align.END
+            valign = Gtk.Align.END,
+						margin_bottom = 18,
+						margin_end = 18,
         };
-        button_box.add_css_class ("dialog-action-area");
 
         var message_grid = new Gtk.Grid () {
             column_spacing = 12,
-            row_spacing = 6
+            row_spacing = 6,
+						margin_top = 18,
+						margin_start = 16,
+						margin_end = 18
         };
         message_grid.attach (overlay, 0, 0, 1, 2);
         message_grid.attach (primary_label, 1, 0);

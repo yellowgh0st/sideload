@@ -65,16 +65,9 @@ public class Sideload.SuccessView : AbstractView {
             );
         }
 
-        /// TRANSLATORS: "System Settings" is related to the title of https://github.com/elementary/switchboard, "Applications" is related to the title of https://github.com/elementary/switchboard-plug-applications. Note that this includes an ellipsis (…) in English to signify the action will be performed in a new window.
-        var settings_path = _("System Settings → Applications…");
-        var link_markup = "<a href='%s'>%s</a>".printf ("settings://applications/permissions", settings_path);
-
-        secondary_label_string += " ";
-        secondary_label_string += _("Permissions can be changed in %s").printf (link_markup);
-
-        secondary_label.label = secondary_label_string;
-
         var trash_check = new Gtk.CheckButton.with_label (_("Move ”%s” to Trash").printf (file.file.get_basename ()));
+				trash_check.remove_css_class ("text-button");
+				trash_check.margin_bottom = 6;
         content_area.attach (trash_check, 0, 0);
 
         var settings = new Settings ("io.elementary.sideload");
@@ -83,6 +76,7 @@ public class Sideload.SuccessView : AbstractView {
         var close_button = new Gtk.Button.with_label (_("Close"));
 
         var open_button = new Gtk.Button.with_label (_("Open App"));
+				open_button.margin_start = 12;
         open_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
 
         button_box.append (close_button);
